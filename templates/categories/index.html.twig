@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu de gestion{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-5">Gestion des chatons en base de données</h1>
+        <table class="mt-3 table table-striped">
+            <tr>
+                <th>Titre de la catégorie</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+            {% for c in categories %}
+                <tr>
+                    <td>{{ c.titre }}</td>
+                    <td>{{ c.description }}</td>
+
+                    <td>
+                        <a class="btn btn-secondary" href="{{ path("app_categories_modifier", {"id":c.id}) }}">Modifier</a>
+                        <a class="btn btn-danger" href="{{ path("app_categories_supprimer", {"id":c.id}) }}">Supprimer</a>
+                        <a class="btn btn-primary" href="{{ path("app_chatons", {"id":c.id}) }}">Voir les chatons</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ path('app_proprietaire_voir') }}" class="mt-5 mr-5 btn btn-primary">Voir les propriétaires</a>
+        <a href="{{ path("app_categories_ajouter") }}" class="mt-5 mx-1 btn btn-success">Ajouter une categorie</a>
+        <a href="{{ path("app_chaton_ajouter") }}" class="mt-5 mx-1 btn btn-success">Ajouter un chaton</a>
+        <a href="{{ path('app_proprietaire_ajouter') }}" class="mt-5 mx-1 btn btn-success">Ajouter un propriétaire</a>
+    </div>
+{% endblock %}

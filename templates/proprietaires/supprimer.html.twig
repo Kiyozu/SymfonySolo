@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer un propriétaire{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Supprimer le propriétaire <i>{{ proprietaire.prenom }} {{ proprietaire.nom }}</i></h1>
+        <p>Les chatons associés à ce propriétaires ne seront pas supprimées</p>
+        {{ form(formulaire) }}
+        <a href="{{ path("app_categories") }}" class="btn btn-primary">Retour</a>
+    </div>
+{% endblock %}
